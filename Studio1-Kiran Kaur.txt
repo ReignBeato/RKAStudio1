@@ -1,4 +1,69 @@
-studio1 
+Create table student(
+student_ID integer primary key,
+student_name text
+);
 
+insert into student(student_ID, student_name) values(1001,'Kiran');
+insert into student(student_ID, student_name) values(1002,'Reign');
+insert into student(student_ID, student_name) values(1003,'Aunkush');
+insert into student(student_ID, student_name) values(1004,'Araya');
+insert into student(student_ID, student_name) values(1005,'Sujal');
+insert into student(student_ID, student_name) values(1006,'Dev');
+insert into student(student_ID, student_name) values(1007,'Heli');
+insert into student(student_ID, student_name) values(1008,'Prabh');
 
-my name is kiran.
+Create table location(
+location_number integer primary key,
+foreign key (service provider_name) reference service provider(service provider_name),
+foreign key (avail_ID) reference avalability(avail_ID)
+);
+
+insert into location(location_number, avail_id, service provider_name) values('Room 201',100121,'Sam');
+insert into location(location_number, avail_id, service provider_name ) values('Room 202',100122,'John');
+i8nsert into location(location_number, avail_id, service provider_name ) values('Room 601',100123,'Marry);
+insert into location(location_number, avail_id, service provider_name ) values('Room 705',100124,'Sam');
+insert into location(location_number, avail_id, service provider_name ) values('Room 102',100125,'Marry');
+insert into location(location_number, avail_id, service provider_name ) values('Room 803',100126,'John');
+insert into location(location_number, avail_id, service provider_name) values('Room 209',100127,'Sam');
+insert into location(location_number, avail_id, service provider_name) values('Room 208',100128,'John');
+
+Create table course(
+course_ID text primary key,
+course_name text,
+foreign key (enrolment_ID) reference enrolment(enrolment_ID),
+foreign key (student_ID) reference student(student_ID)
+);
+
+insert into course(course_ID, course_name, enrolment_ID, student_ID) values('IT101', 'Information Technology', 79, 1001);
+insert into course(course_ID, course_name, enrolment_ID, student_ID) values('BM128', 'Business Management', 98, 1002);
+insert into course(course_ID, course_name, enrolment_ID, student_ID) values('AM111', 'Applied Management', 34, 1003);
+insert into course(course_ID, course_name, enrolment_ID, student_ID) values('ENG201', 'English', 79, 1004);
+insert into course(course_ID, course_name, enrolment_ID, student_ID) values('CON567', 'Construction', 55, 1005);
+insert into course(course_ID, course_name, enrolment_ID, student_ID) values('IT101', 'Information Technology', 34, 1006);
+insert into course(course_ID, course_name, enrolment_ID, student_ID) values('AM111', 'Applied Mnagement',25 , 1007);
+insert into course(course_ID, course_name, enrolment_ID, student_ID) values('ENG201', 'English', 64, 1008);
+
+Create table service provider(
+service provider_ID integer primary key,
+service provider_name text,
+service provider_type text
+);
+
+insert into service provider(service provider_ID, service provider_name, service provider_type) values(901,'Sam', 'Tutor');
+insert into service provider(service provider_ID, service provider_name, service provider_type) values(902,'Marry', 'Tutor');
+insert into service provider(service provider_ID, service provider_name, service provider_type) values(903,'John', 'Mentor');
+
+Create table enrolement(
+enrolement_ID integer primary key,
+block_ID integer,
+block_start text,
+block_end text
+);
+insert into enrolment(enrolment_ID, block_ID, block_start, block_end) values(79, 12, 'Jan 2023', 'March 2023');
+insert into enrolment(enrolment_ID, block_ID, block_start, block_end) values(98, 12, 'April 2023', 'June 2023');
+insert into enrolment(enrolment_ID, block_ID, block_start, block_end) values(34, 12, 'August 2023', 'October 2023');
+insert into enrolment(enrolment_ID, block_ID, block_start, block_end) values(55, 12, 'Nov 2023', ' Jan 2024');
+insert into enrolment(enrolment_ID, block_ID, block_start, block_end) values(34, 12, 'March 2024', 'May 2024');
+insert into enrolment(enrolment_ID, block_ID, block_start, block_end) values(64, 12, 'June 2024', 'August 2024');
+insert into enrolment(enrolment_ID, block_ID, block_start, block_end) values(25, 12, 'September 2024', 'Nov 2024');
+insert into enrolment(enrolment_ID, block_ID, block_start, block_end) values(79, 12, 'Jan 2025', 'March 2025');
