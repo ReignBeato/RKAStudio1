@@ -15,7 +15,7 @@ insert into student(student_ID, student_name) values(1008,'Prabh');
 Create table location(
 location_number integer primary key,
 foreign key (service provider_name) reference service provider(service provider_name),
-foreign key (avail_ID) reference avalability(avail_ID)
+foreign key (avail_ID) reference availability(avail_ID)
 );
 
 insert into location(location_number, avail_id, service provider_name) values('Room 201',100121,'Sam');
