@@ -1,1 +1,6 @@
-Querries:
+View the blocks for the courses- query: select * from block
+View which service provider is teaching the courses- query:  select * from service_provider
+View an appointment- que 
+View an enrolment 
+Insert an availability  
+Insert a location for the meeting 
