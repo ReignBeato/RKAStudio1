@@ -1,6 +1,6 @@
 View the blocks for the courses- query: select * from block
 View which service provider is teaching the courses- query:  select * from service_provider
-View an appointment- que 
-View an enrolment 
-Insert an availability  
-Insert a location for the meeting 
+View an appointment- query: select * from appointment 
+View an enrolment- query: select * from enrolment 
+Insert an availability- query: insert into availibility (appt_ID, appt_Date, appt_Start, appt_End, student_ID, sp_ID) values ('APPT9', '2025-02-15', '10:30', '11:30', 'S1006', 'P2004');
+Insert a location for the meeting- query: insert into  
