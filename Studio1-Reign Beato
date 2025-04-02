@@ -51,8 +51,8 @@ create table availability(
     avail_Start time,
     avail_End time,
     avail_Day text,
-    location text,
-    sp_ID integer,
+    location text not null,
+    sp_ID text not null,
     foreign key (sp_ID) references service_provider(sp_ID)
 );
  
@@ -178,7 +178,7 @@ values ('Y2402', 'S1002', 'AM111');
 insert into enrolment(enrol_ID, student_ID, course_ID)
 values ('Y2403', 'S1003', 'ENG201');
 insert into enrolment(enrol_ID, student_ID, course_ID)
-values ('Y2404', 'S100', 'CON567');
+values ('Y2404', 'S1004', 'CON567');
 insert into enrolment(enrol_ID, student_ID, course_ID)
 values ('Y2501', 'S1005', 'AM111');
 insert into enrolment(enrol_ID, student_ID, course_ID)
@@ -186,7 +186,7 @@ values ('Y2502', 'S1006', 'ENG201');
 insert into enrolment(enrol_ID, student_ID, course_ID)
 values ('Y2503', 'S1007', 'CON567');
 insert into enrolment(enrol_ID, student_ID, course_ID)
-values ('Y2504', 'S1008', 'EN201');
+values ('Y2504', 'S1008', 'ENG201');
  
 // to check: select * from enrolment;
  
@@ -206,20 +206,20 @@ values ('APPT1', '2025-02-10', '10:00', '11:00', 'S1001', 'P2001');
 insert into appointment(appt_ID, appt_Date, appt_Start, appt_End, student_ID, sp_ID)
 values ('APPT2', '2025-02-11', '9:00', '11:00', 'S1002', 'P2002');
 insert into appointment(appt_ID, appt_Date, appt_Start, appt_End, student_ID, sp_ID)
-values ('APPT3', '2025-02-10', '12:00', '14:00', 'S1003', 'P2007');
+values ('APPT3', '2025-02-10', '12:00', '14:00', 'S1003', 'P2003');
 insert into appointment(appt_ID, appt_Date, appt_Start, appt_End, student_ID, sp_ID)
-values ('APPT4', '2025-02-11', '12:00', '14:00', 'S1004', 'P2008');
+values ('APPT4', '2025-02-11', '12:00', '14:00', 'S1004', 'P2004');
 insert into appointment(appt_ID, appt_Date, appt_Start, appt_End, student_ID, sp_ID)
-values ('APPT5', '2025-02-12', '10:30', '11:30', 'S1005', 'P2001');
+values ('APPT5', '2025-02-12', '10:30', '11:30', 'S1005', 'P2005');
 insert into appointment(appt_ID, appt_Date, appt_Start, appt_End, student_ID, sp_ID)
 values ('APPT6', '2025-02-13', '11:30', '13:00', 'S1006', 'P2002');
 insert into appointment(appt_ID, appt_Date, appt_Start, appt_End, student_ID, sp_ID)
-values ('APPT7', '2025-02-12', '11:00', '13:00', 'S1007', 'P2007');
+values ('APPT7', '2025-02-12', '11:00', '13:00', 'S1007', 'P2004');
 insert into appointment(appt_ID, appt_Date, appt_Start, appt_End, student_ID, sp_ID)
-values ('APPT8', '2025-02-13', '14:00', '15:30', 'S1008', 'P2008');
+values ('APPT8', '2025-02-13', '14:00', '15:30', 'S1008', 'P2003');
 insert into appointment(appt_ID, appt_Date, appt_Start, appt_End, student_ID, sp_ID)
-values ('APPT9', '2025-02-14', '11:30', '12:00', 'S1003', 'P2001');
+values ('APPT9', '2025-02-14', '11:30', '12:00', 'S1003', 'P2002');
 insert into appointment(appt_ID, appt_Date, appt_Start, appt_End, student_ID, sp_ID)
-values ('APPT10', '2025-02-14', '14:30', '16:30', 'S1005', 'P2002');
+values ('APPT10', '2025-02-14', '14:30', '16:30', 'S1005', 'P2005');
  
 // to check: select * from appointment;
