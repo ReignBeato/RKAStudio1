@@ -25,7 +25,7 @@ values ('S1007', 'Heli');
 insert into student(student_ID, student_Name)  
 values ('S1008', 'Prabh');
  
-// to check: select * from student;
+select * from student;
  
 create table service_provider(
     sp_ID text primary key not null,
@@ -42,72 +42,83 @@ values ('P2003', 'Nicole', 'Mentor');
 insert into service_provider(sp_ID, sp_Name, sp_Type)
 values ('P2004', 'Veronica', 'Mentor');
 insert into service_provider(sp_ID, sp_Name, sp_Type)
-values ('P2005', 'Sam', 'Tutor');
+values ('P2005', 'Sean', 'Tutor');
+insert into service_provider(sp_ID, sp_Name, sp_Type)
+values ('P2006', 'Janelle', 'Mentor');
  
-// to check: select * from service_provider;
+select * from service_provider;
  
 create table availability(
     avail_ID text primary key not null,
     avail_Start time,
     avail_End time,
     avail_Day text,
-    location text not null,
-    sp_ID text not null,
+    location text,
+    sp_ID text,
     foreign key (sp_ID) references service_provider(sp_ID)
 );
  
 insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
 values ('AV1', '10:00', '11:00', 'Monday', 'Room 201', 'P2001');
 insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
-values ('AV2', '12:00', '14:00', 'Monday', 'Room 204', 'P2002');
-insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
-values ('AV3', '9:00', '11:00', 'Tuesday', 'Room 207', 'P2003');
-insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
-values ('AV4', '12:00', '14:00', 'Tuesday', 'Room 309', 'P2004');
-insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
-values ('AV5', '10:30', '11:30', 'Wednseday', 'Room 301', 'P2005');
-insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
 values ('AV6', '11:00', '13:00', 'Wednesday', 'Room 402', 'P2001');
+insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
+values ('AV2', '12:00', '14:00', 'Monday', 'Room 204', 'P2002');
 insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
 values ('AV7', '11:30', '13:00', 'Thursday', 'Room 503', 'P2002');
 insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
+values ('AV3', '9:00', '11:00', 'Tuesday', 'Room 207', 'P2003');
+insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
 values ('AV8', '14:00', '15:30', 'Thursday', 'Room 602', 'P2003');
+insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
+values ('AV4', '12:00', '14:00', 'Tuesday', 'Room 309', 'P2004');
 insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
 values ('AV9', '11:30', '12:00', 'Friday', 'Room 704', 'P2004');
 insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
+values ('AV5', '10:30', '11:30', 'Wednseday', 'Room 301', 'P2005');
+insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
 values ('AV10', '14:30', '16:30', 'Friday', 'Room 702', 'P2005');
+insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
+values ('AV11', '13:30', '15:30', 'Monday', 'Room 301', 'P2006');
+insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
+values ('AV12', '10:30', '12:30', 'Friday', 'Room 702', 'P2006');
  
-// to check: select * from availability;
+select * from availability;
  
 create table course(
     course_ID text primary key not null,
+    course_Code text not null,
     course_Name text not null,
     sp_ID text not null,
     foreign key (sp_ID) references service_provider(sp_ID)
 );
  
-insert into course(course_ID, course_Name, sp_ID)
-values ('IT1O1', 'Information Technology', 'P2001');
-insert into course(course_ID, course_Name, sp_ID)
-values ('AM111', 'Applied Management', 'P2002');
-insert into course(course_ID, course_Name, sp_ID)
-values ('ENG201', 'English', 'P2003');
-insert into course(course_ID, course_Name, sp_ID)
-values ('CON567', 'Construction', 'P2004');
-insert into course(course_ID, course_Name, sp_ID)
-values ('IT1O1', 'Information Technology', 'P2005');
-insert into course(course_ID, course_Name, sp_ID)
-values ('AM111', 'Applied Management', 'P2001');
-insert into course(course_ID, course_Name, sp_ID)
-values ('ENG201', 'English', 'P2002');
-insert into course(course_ID, course_Name, sp_ID)
-values ('CON567', 'Construction', 'P2003');
-insert into course(course_ID, course_Name, sp_ID)
-values ('IT1O1', 'Information Technology', 'P2004');
-insert into course(course_ID, course_Name, sp_ID)
-values ('AM111', 'Applied Management', 'P2005');
+insert into course(course_ID, course_Code, course_Name, sp_ID)
+values ('IT-P21', 'IT1O1', 'Information Technology', 'P2001');
+insert into course(course_ID, course_Code, course_Name, sp_ID)
+values ('ENG-P21', 'ENG201', 'English', 'P2001');
+insert into course(course_ID, course_Code, course_Name, sp_ID)
+values ('CON-P22', 'CON567', 'Construction', 'P2002');
+insert into course(course_ID, course_Code, course_Name, sp_ID)
+values ('AM-P22', 'AM111', 'Applied Management', 'P2002');
+insert into course(course_ID, course_Code, course_Name, sp_ID)
+values ('MTH-P23', 'MTH295', 'Maths', 'P2003');
+insert into course(course_ID, course_Code, course_Name, sp_ID)
+values ('STO-P23', 'STO125', 'Studio', 'P2003');
+insert into course(course_ID, course_Code, course_Name, sp_ID)
+values ('PRA-P24', 'PRA405', 'Maths', 'P2004');
+insert into course(course_ID, course_Code, course_Name, sp_ID)
+values ('CTX-P24', 'CTX173', 'Context', 'P2004');
+insert into course(course_ID, course_Code, course_Name, sp_ID)
+values ('SCL-P25', 'SCL658', 'Scaling', 'P2005');
+insert into course(course_ID, course_Code, course_Name, sp_ID)
+values ('MST-P25', 'MST100', 'Measurement', 'P2005');
+insert into course(course_ID, course_Code, course_Name, sp_ID)
+values ('RSR-P26', 'RSR200', 'Research', 'P2006');
+insert into course(course_ID, course_Code, course_Name, sp_ID)
+values ('BSB-P26', 'BSB904', 'Business', 'P2006');
  
--- to check: select * from course;
+select * from course;
  
 create table block(
     block_ID text primary key not null,
@@ -134,7 +145,7 @@ values ('2025-B3', 2025, 3, '2025-04-10', '2025-06-10');
 insert into block(block_ID, block_Year, block_Number, block_Start, block_End)
 values ('2025-B4', 2025, 4, '2025-06-10', '2025-08-10');
  
-// to check: select * from block;
+select * from block;
  
 create table blockCourse(
     blockCourse_ID text primary key not null,
@@ -145,23 +156,31 @@ create table blockCourse(
 );
  
 insert into blockCourse(blockCourse_ID, course_ID, block_ID)
-values ('IT24-B1', 'IT1O1', '2024-B1');
+values ('IT24-B1', 'IT-P21', '2024-B1');
 insert into blockCourse(blockCourse_ID, course_ID, block_ID)
-values ('AM24-B2', 'AM111', '2024-B2');
+values ('AM24-B2', 'AM-P22', '2024-B2');
 insert into blockCourse(blockCourse_ID, course_ID, block_ID)
-values ('ENG24-B3', 'ENG201', '2024-B3');
+values ('ENG24-B3', 'ENG-P21', '2024-B3');
 insert into blockCourse(blockCourse_ID, course_ID, block_ID)
-values ('CON24-B4', 'CON567', '2024-B4');
+values ('CON24-B4', 'CON-P22', '2024-B4');
 insert into blockCourse(blockCourse_ID, course_ID, block_ID)
-values ('IT25-B1', 'IT1O1', '2025-B1');
+values ('MTH25-B1', 'MTH-P23', '2025-B1');
 insert into blockCourse(blockCourse_ID, course_ID, block_ID)
-values ('AM25-B2', 'AM111', '2025-B2');
+values ('STO25-B2', 'STO-P23', '2025-B2');
 insert into blockCourse(blockCourse_ID, course_ID, block_ID)
-values ('ENG25-B3', 'ENG201', '2025-B3');
+values ('PRA25-B3', 'PRA-P24', '2025-B3');
 insert into blockCourse(blockCourse_ID, course_ID, block_ID)
-values ('CON25-B4', 'CON567', '2025-B4');
- 
-// to check: select * from blockCourse;
+values ('CTX25-B4', 'CTX-P24', '2025-B4');
+insert into blockCourse(blockCourse_ID, course_ID, block_ID)
+values ('SCL25-B1', 'SCL-P25', '2025-B1');
+insert into blockCourse(blockCourse_ID, course_ID, block_ID)
+values ('MST25-B2', 'MST-P25', '2025-B2');
+insert into blockCourse(blockCourse_ID, course_ID, block_ID)
+values ('RSR25-B3', 'RSR-P26', '2025-B3');
+insert into blockCourse(blockCourse_ID, course_ID, block_ID)
+values ('BSB25-B4', 'BSB-P26', '2025-B4');
+
+select * from blockCourse;
  
 create table enrolment(
     enrol_ID text primary key not null,
@@ -172,23 +191,39 @@ create table enrolment(
 );
  
 insert into enrolment(enrol_ID, student_ID, course_ID)
-values ('Y2401', 'S1001', 'IT101');
+values ('Y2401-S1', 'S1001', 'IT-P21');
 insert into enrolment(enrol_ID, student_ID, course_ID)
-values ('Y2402', 'S1002', 'AM111');
+values ('Y2402-S2', 'S1002', 'AM-P22');
 insert into enrolment(enrol_ID, student_ID, course_ID)
-values ('Y2403', 'S1003', 'ENG201');
+values ('Y2403-S3', 'S1003', 'ENG-P21');
 insert into enrolment(enrol_ID, student_ID, course_ID)
-values ('Y2404', 'S1004', 'CON567');
+values ('Y2404-S4', 'S1004', 'CON-P22');
 insert into enrolment(enrol_ID, student_ID, course_ID)
-values ('Y2501', 'S1005', 'AM111');
+values ('Y2501-S5', 'S1005', 'MTH-P23');
 insert into enrolment(enrol_ID, student_ID, course_ID)
-values ('Y2502', 'S1006', 'ENG201');
+values ('Y2502-S6', 'S1006', 'STO-P23');
 insert into enrolment(enrol_ID, student_ID, course_ID)
-values ('Y2503', 'S1007', 'CON567');
+values ('Y2503-S7', 'S1007', 'PRA-P24');
 insert into enrolment(enrol_ID, student_ID, course_ID)
-values ('Y2504', 'S1008', 'ENG201');
+values ('Y2504-S8', 'S1008', 'CTX-P24');
+insert into enrolment(enrol_ID, student_ID, course_ID)
+values ('Y2501-S1', 'S1001', 'SCL-P25');
+insert into enrolment(enrol_ID, student_ID, course_ID)
+values ('Y2502-S2', 'S1002', 'STO-P23');
+insert into enrolment(enrol_ID, student_ID, course_ID)
+values ('Y2503-S3', 'S1003', 'PRA-P24');
+insert into enrolment(enrol_ID, student_ID, course_ID)
+values ('Y2504-S4', 'S1004', 'CTX-P24');
+insert into enrolment(enrol_ID, student_ID, course_ID)
+values ('Y2501-S05', 'S1005', 'SCL-P25');
+insert into enrolment(enrol_ID, student_ID, course_ID)
+values ('Y2502-S06', 'S1006', 'MST-P25');
+insert into enrolment(enrol_ID, student_ID, course_ID)
+values ('Y2503-S07', 'S1007', 'RSR-P26');
+insert into enrolment(enrol_ID, student_ID, course_ID)
+values ('Y2504-S08', 'S1008', 'BSB-P26');
  
-// to check: select * from enrolment;
+select * from enrolment;
  
 create table appointment(
     appt_ID text primary key not null,
@@ -204,22 +239,22 @@ create table appointment(
 insert into appointment(appt_ID, appt_Date, appt_Start, appt_End, student_ID, sp_ID)
 values ('APPT1', '2025-02-10', '10:00', '11:00', 'S1001', 'P2001');
 insert into appointment(appt_ID, appt_Date, appt_Start, appt_End, student_ID, sp_ID)
-values ('APPT2', '2025-02-11', '9:00', '11:00', 'S1002', 'P2002');
+values ('APPT2', '2025-02-11', '09:00', '11:00', 'S1002', 'P2002');
 insert into appointment(appt_ID, appt_Date, appt_Start, appt_End, student_ID, sp_ID)
-values ('APPT3', '2025-02-10', '12:00', '14:00', 'S1003', 'P2003');
+values ('APPT3', '2025-02-10', '12:00', '14:00', 'S1003', 'P2004');
 insert into appointment(appt_ID, appt_Date, appt_Start, appt_End, student_ID, sp_ID)
-values ('APPT4', '2025-02-11', '12:00', '14:00', 'S1004', 'P2004');
+values ('APPT4', '2025-02-11', '12:00', '14:00', 'S1004', 'P2002');
 insert into appointment(appt_ID, appt_Date, appt_Start, appt_End, student_ID, sp_ID)
 values ('APPT5', '2025-02-12', '10:30', '11:30', 'S1005', 'P2005');
 insert into appointment(appt_ID, appt_Date, appt_Start, appt_End, student_ID, sp_ID)
-values ('APPT6', '2025-02-13', '11:30', '13:00', 'S1006', 'P2002');
+values ('APPT6', '2025-02-13', '11:30', '13:00', 'S1006', 'P2003');
 insert into appointment(appt_ID, appt_Date, appt_Start, appt_End, student_ID, sp_ID)
 values ('APPT7', '2025-02-12', '11:00', '13:00', 'S1007', 'P2004');
 insert into appointment(appt_ID, appt_Date, appt_Start, appt_End, student_ID, sp_ID)
-values ('APPT8', '2025-02-13', '14:00', '15:30', 'S1008', 'P2003');
+values ('APPT8', '2025-02-13', '14:00', '15:30', 'S1008', 'P2006');
 insert into appointment(appt_ID, appt_Date, appt_Start, appt_End, student_ID, sp_ID)
-values ('APPT9', '2025-02-14', '11:30', '12:00', 'S1003', 'P2002');
+values ('APPT9', '2025-02-14', '11:30', '12:00', 'S1003', 'P2001');
 insert into appointment(appt_ID, appt_Date, appt_Start, appt_End, student_ID, sp_ID)
-values ('APPT10', '2025-02-14', '14:30', '16:30', 'S1005', 'P2005');
+values ('APPT10', '2025-02-14', '14:30', '16:30', 'S1005', 'P2003');
  
-// to check: select * from appointment;
+select * from appointment;
