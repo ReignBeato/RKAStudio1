@@ -1,1 +1,76 @@
+-- With all queries
+-- Part 1
+1.	View an appointment with an appointment id (select sql)
+    select * from appointment where appt_ID = 'APPT3';
 
+2.	Cancel an appointment using a student id and service provider id (delete sql)
+    delete from appointment where student_ID = 'S1003' and sp_ID = 'P2001';
+
+3.	Make an appointment with a service provider for a Math course (insert sql)
+    insert into appointment(appt_ID, appt_Date, appt_Start, appt_End, student_ID, sp_ID)
+    values ('APPT11', '2025-02-15', '9:30', '11:30', 'S1005', 'P2003');
+
+4.	View an enrolment with a course id (select sql)
+    select * from enrolment where course_ID = 'PRA-24';
+
+5.	View all the service provider’s availability form earliest to latest time (select sql)
+    select * from availability order by avail_Start asc;
+
+6.	View the courses in the enrolment (select sql)
+    select * from course left join enrolment on course.course_ID = enrolment.course_ID;
+    -- To see if there are courses without students
+
+-- Part 2
+7.	View the blocks for the courses (select sql)
+    select * from block left join course on block.block_ID = course.block_ID;
+    -- To see if there are blocks without courses
+8.	View which service provider is teaching the courses (select sql)
+    select * from course where course_Code = 'IT101';
+9.	View an appointment from earliest date to the latest date (select sql)
+    select * from appointment order by appt_Date asc;
+10.	View an enrolment for all students in a course (select sql)
+    select enrolment.enrol_ID, enrolment.course_ID, student.student_ID, student.student_Name
+    from enrolment 
+    inner join student on enrolment.student_ID = student.student_ID
+    where enrolment.course_ID = 'CTX-P24';
+    -- To see the students that are enrolled in which course and which enrolment
+11.	Insert an availability (insert sql)
+    insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
+    values ('AV12', '10:30', '12:30', 'Friday', 'Room 702', 'P2006');
+12.	Update a location for the meeting (update sql)
+    update appointment set location = 'Room 703' where appt_ID = 'APPT11';
+
+-- Part 3
+13.	View the courses in the enrolment and change the name to ACADYEAR2025, the student id to STUDENTS, 
+    and the course id to COURSES in order of the student ID (select sql)
+    select course_ID as 'ACADYEAR2025',
+    student_ID as 'STUDENTS',
+    course_ID as 'COURSES' from enrolment order by student_ID asc;
+14.	Show how many times a block is in the database, show the block, and which courses are in that block (select sql)
+    -- First application: select block_ID, count(block_ID) from blockCourse group by block_ID;
+    -- Second application: 
+    select block_ID as 'Block ID', count(block_ID) as 'Block Count', group_concat(course_ID) as 
+    'Courses' from blockCourse group by block_ID;
+    -- Source: https://www.w3resource.com/mysql/aggregate-functions-and-grouping/aggregate-functions-and-grouping-group_concat.php
+    -- GROUP_CONCAT() is useful for displaying data in applications, reports, or user interfaces 
+    -- where a single field needs to show multiple related values.
+15.	View an appointment from a specific service provider from earlier date to latest(select sql)
+    select * from appointment where sp_ID = 'P2001' order by appt_Date asc;
+16.	Count the total number of apppointments in a day (count sql)
+    select appt_Date as 'DATE', count(appt_ID) as 'NO. OF APPOINTMENTS' from appointment
+    group by appt_Date order by appt_Date;
+17.	Get the total time of appointments from specific days (avg sql)
+    -- First application: select appt_Date as 'DATE', avg(appt_End - appt_Start) as 'AVG TIME' from appointment;
+    -- Output: one date only 
+    -- Second application:
+    select appt_Date as 'DATE', 
+        avg((strftime('%s', appt_End) - strftime('%s', appt_Start)) / 3600.0) AS 'AVERAGE HOUR COUNT'
+    from appointment
+    group by appt_Date
+    order by appt_Date;
+    -- Source: ChatGPT. (2025). SQL query to calculate average appointment duration. OpenAI. Available: https://chat.openai.com
+    -- ChatGPT, 2025 
+    -- strftime is a function in SQL (and many programming languages) that formats dates and times into a specific string format
+    -- In the SQLite strftime function, the '%s' format specifier is used to convert a date or time value into the number of seconds 
+    -- strftime('%s', appt_Start): This converts the appt_Start time to the number of seconds since January 1, 1970 (Unix epoch).
+	  -- strftime('%s', appt_End): Similarly, this converts the appt_End time to the number of seconds since the Unix epoch.
