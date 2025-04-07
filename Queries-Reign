@@ -38,7 +38,7 @@
     insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
     values ('AV12', '10:30', '12:30', 'Friday', 'Room 702', 'P2006');
 12.	Update a location for the meeting (update sql)
-    update appointment set location = 'Room 703' where appt_ID = 'APPT11';
+    update availability set location = 'Room 703' where appt_ID = 'APPT11';
 
 -- Part 3
 13.	View the courses in the enrolment and change the name to ACADYEAR2025, the student id to STUDENTS, 
@@ -59,7 +59,7 @@
 16.	Count the total number of apppointments in a day (count sql)
     select appt_Date as 'DATE', count(appt_ID) as 'NO. OF APPOINTMENTS' from appointment
     group by appt_Date order by appt_Date;
-17.	Get the total time of appointments from specific days (avg sql)
+17.	Get the average time of appointments from specific days (avg sql)
     -- First application: select appt_Date as 'DATE', avg(appt_End - appt_Start) as 'AVG TIME' from appointment;
     -- Output: one date only 
     -- Second application:
@@ -73,4 +73,4 @@
     -- strftime is a function in SQL (and many programming languages) that formats dates and times into a specific string format
     -- In the SQLite strftime function, the '%s' format specifier is used to convert a date or time value into the number of seconds 
     -- strftime('%s', appt_Start): This converts the appt_Start time to the number of seconds since January 1, 1970 (Unix epoch).
-	  -- strftime('%s', appt_End): Similarly, this converts the appt_End time to the number of seconds since the Unix epoch.
+	-- strftime('%s', appt_End): Similarly, this converts the appt_End time to the number of seconds since the Unix epoch.
