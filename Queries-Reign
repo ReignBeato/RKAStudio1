@@ -38,7 +38,7 @@
     insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
     values ('AV12', '10:30', '12:30', 'Friday', 'Room 702', 'P2006');
 12.	Update a location for the meeting (update sql)
-    update availability set location = 'Room 703' where appt_ID = 'APPT11';
+    update availability set location = 'Room 703' where avail_ID = 'AV9';
 
 -- Part 3
 13.	View the courses in the enrolment and change the name to ACADYEAR2025, the student id to STUDENTS, 
