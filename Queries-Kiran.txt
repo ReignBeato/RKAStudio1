@@ -1,6 +1,18 @@
-View the blocks for the courses- query: select * from block
-View which service provider is teaching the courses- query:  select * from service_provider
-View an appointment- query: select * from appointment 
-View an enrolment- query: select * from enrolment 
-Insert an availability- query: insert into availibility (appt_ID, appt_Date, appt_Start, appt_End, student_ID, sp_ID) values ('APPT9', '2025-02-15', '10:30', '11:30', 'S1006', 'P2004');
-Insert a location for the meeting- query: insert into availibility
+View the blocks for the courses (select sql)
+    select * from block left join course on block.block_ID = course.block_ID;
+    -- To see if there are blocks without courses
+View which service provider is teaching the courses (select sql)
+    select * from course where course_Code = 'IT101';
+View an appointment from earliest date to the latest date (select sql)
+    select * from appointment order by appt_Date asc;
+ View an enrolment for all students in a course (select sql)
+    select enrolment.enrol_ID, enrolment.course_ID, student.student_ID, student.student_Name
+    from enrolment
+inner join student on enrolment.student_ID = student.student_ID
+    where enrolment.course_ID = 'CTX-P24';
+    -- To see the students that are enrolled in which course and which enrolment Insert an availability (insert sql)  insert 
+ into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
+    values ('AV12', '10:30', '12:30', 'Friday', 'Room 702', 'P2006');
+Update a location for the meeting (update sql)
+    update appointment set location = 'Room 703' where appt_ID = 'APPT11';
+ 
