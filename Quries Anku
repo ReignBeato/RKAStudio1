@@ -1,0 +1,19 @@
+1.  View an appointment with an appointment id (select sql)
+    select * from appointment where appt_ID = 'APPT3';
+ 
+2.  Cancel an appointment using a student id and service provider id (delete sql)
+    delete from appointment where student_ID = 'S1003' and sp_ID = 'P2001';
+ 
+3.  Make an appointment with a service provider for a Math course (insert sql)
+    insert into appointment(appt_ID, appt_Date, appt_Start, appt_End, student_ID, sp_ID)
+    values ('APPT11', '2025-02-15', '9:30', '11:30', 'S1005', 'P2003');
+ 
+4.  View an enrolment with a course id (select sql)
+    select * from enrolment where course_ID = 'PRA-24';
+ 
+5.  View all the service provider’s availability form earliest to latest time (select sql)
+    select * from availability order by avail_Start asc;
+ 
+6.  View the courses in the enrolment (select sql)
+    select * from course left join enrolment on course.course_ID = enrolment.course_ID;
+    -- To see if there are courses without students
