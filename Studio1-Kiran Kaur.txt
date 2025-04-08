@@ -37,37 +37,46 @@ values ('P2003', 'Nicole', 'Mentor');
 insert into service_provider(sp_ID, sp_Name, sp_Type)
 values ('P2004', 'Veronica', 'Mentor');
 insert into service_provider(sp_ID, sp_Name, sp_Type)
-values ('P2005', 'Sam', 'Tutor');
+values ('P2005', 'Sean', 'Tutor');
+insert into service_provider(sp_ID, sp_Name, sp_Type)
+values ('P2006', 'Janelle', 'Mentor');
  
-// to check: select * from service_provider;
+select * from service_provider;
 
 create table course(
     course_ID text primary key not null,
+    course_Code text not null,
     course_Name text not null,
     sp_ID text not null,
     foreign key (sp_ID) references service_provider(sp_ID)
 );
  
-insert into course(course_ID, course_Name, sp_ID)
-values ('IT1O1', 'Information Technology', 'P2001');
-insert into course(course_ID, course_Name, sp_ID)
-values ('AM111', 'Applied Management', 'P2002');
-insert into course(course_ID, course_Name, sp_ID)
-values ('ENG201', 'English', 'P2003');
-insert into course(course_ID, course_Name, sp_ID)
-values ('CON567', 'Construction', 'P2004');
-insert into course(course_ID, course_Name, sp_ID)
-values ('IT1O1', 'Information Technology', 'P2005');
-insert into course(course_ID, course_Name, sp_ID)
-values ('AM111', 'Applied Management', 'P2001');
-insert into course(course_ID, course_Name, sp_ID)
-values ('ENG201', 'English', 'P2002');
-insert into course(course_ID, course_Name, sp_ID)
-values ('CON567', 'Construction', 'P2003');
-insert into course(course_ID, course_Name, sp_ID)
-values ('IT1O1', 'Information Technology', 'P2004');
-insert into course(course_ID, course_Name, sp_ID)
-values ('AM111', 'Applied Management', 'P2005');
+insert into course(course_ID, course_Code, course_Name, sp_ID)
+values ('IT-P21', 'IT1O1', 'Information Technology', 'P2001');
+insert into course(course_ID, course_Code, course_Name, sp_ID)
+values ('ENG-P21', 'ENG201', 'English', 'P2001');
+insert into course(course_ID, course_Code, course_Name, sp_ID)
+values ('CON-P22', 'CON567', 'Construction', 'P2002');
+insert into course(course_ID, course_Code, course_Name, sp_ID)
+values ('AM-P22', 'AM111', 'Applied Management', 'P2002');
+insert into course(course_ID, course_Code, course_Name, sp_ID)
+values ('MTH-P23', 'MTH295', 'Maths', 'P2003');
+insert into course(course_ID, course_Code, course_Name, sp_ID)
+values ('STO-P23', 'STO125', 'Studio', 'P2003');
+insert into course(course_ID, course_Code, course_Name, sp_ID)
+values ('PRA-P24', 'PRA405', 'Maths', 'P2004');
+insert into course(course_ID, course_Code, course_Name, sp_ID)
+values ('CTX-P24', 'CTX173', 'Context', 'P2004');
+insert into course(course_ID, course_Code, course_Name, sp_ID)
+values ('SCL-P25', 'SCL658', 'Scaling', 'P2005');
+insert into course(course_ID, course_Code, course_Name, sp_ID)
+values ('MST-P25', 'MST100', 'Measurement', 'P2005');
+insert into course(course_ID, course_Code, course_Name, sp_ID)
+values ('RSR-P26', 'RSR200', 'Research', 'P2006');
+insert into course(course_ID, course_Code, course_Name, sp_ID)
+values ('BSB-P26', 'BSB904', 'Business', 'P2006');
+ 
+select * from course;
  
 create table enrolment(
     enrol_ID text primary key not null,
@@ -78,21 +87,38 @@ create table enrolment(
 );
  
 insert into enrolment(enrol_ID, student_ID, course_ID)
-values ('Y2401', 'S1001', 'IT101');
+values ('Y2401-S1', 'S1001', 'IT-P21');
 insert into enrolment(enrol_ID, student_ID, course_ID)
-values ('Y2402', 'S1002', 'AM111');
+values ('Y2402-S2', 'S1002', 'AM-P22');
 insert into enrolment(enrol_ID, student_ID, course_ID)
-values ('Y2403', 'S1003', 'ENG201');
+values ('Y2403-S3', 'S1003', 'ENG-P21');
 insert into enrolment(enrol_ID, student_ID, course_ID)
-values ('Y2404', 'S100', 'CON567');
+values ('Y2404-S4', 'S1004', 'CON-P22');
 insert into enrolment(enrol_ID, student_ID, course_ID)
-values ('Y2501', 'S1005', 'AM111');
+values ('Y2501-S5', 'S1005', 'MTH-P23');
 insert into enrolment(enrol_ID, student_ID, course_ID)
-values ('Y2502', 'S1006', 'ENG201');
+values ('Y2502-S6', 'S1006', 'STO-P23');
 insert into enrolment(enrol_ID, student_ID, course_ID)
-values ('Y2503', 'S1007', 'CON567');
+values ('Y2503-S7', 'S1007', 'PRA-P24');
 insert into enrolment(enrol_ID, student_ID, course_ID)
-values ('Y2504', 'S1008', 'EN201');
+values ('Y2504-S8', 'S1008', 'CTX-P24');
+insert into enrolment(enrol_ID, student_ID, course_ID)
+values ('Y2501-S1', 'S1001', 'SCL-P25');
+insert into enrolment(enrol_ID, student_ID, course_ID)
+values ('Y2502-S2', 'S1002', 'STO-P23');
+insert into enrolment(enrol_ID, student_ID, course_ID)
+values ('Y2503-S3', 'S1003', 'PRA-P24');
+insert into enrolment(enrol_ID, student_ID, course_ID)
+values ('Y2504-S4', 'S1004', 'CTX-P24');
+insert into enrolment(enrol_ID, student_ID, course_ID)
+values ('Y2501-S05', 'S1005', 'SCL-P25');
+insert into enrolment(enrol_ID, student_ID, course_ID)
+values ('Y2502-S06', 'S1006', 'MST-P25');
+insert into enrolment(enrol_ID, student_ID, course_ID)
+values ('Y2503-S07', 'S1007', 'RSR-P26');
+insert into enrolment(enrol_ID, student_ID, course_ID)
+values ('Y2504-S08', 'S1008', 'BSB-P26');
  
-// to check: select * from enrolment;
+select * from enrolment;
+ 
  
