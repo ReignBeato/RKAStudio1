@@ -7,31 +7,37 @@ create table availability(
     avail_Start time,
     avail_End time,
     avail_Day text,
-    location text not null,
-    sp_ID text not null,
+    location text,
+    sp_ID text,
     foreign key (sp_ID) references service_provider(sp_ID)
 );
  
 insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
 values ('AV1', '10:00', '11:00', 'Monday', 'Room 201', 'P2001');
 insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
-values ('AV2', '12:00', '14:00', 'Monday', 'Room 204', 'P2002');
-insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
-values ('AV3', '9:00', '11:00', 'Tuesday', 'Room 207', 'P2003');
-insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
-values ('AV4', '12:00', '14:00', 'Tuesday', 'Room 309', 'P2004');
-insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
-values ('AV5', '10:30', '11:30', 'Wednseday', 'Room 301', 'P2005');
-insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
 values ('AV6', '11:00', '13:00', 'Wednesday', 'Room 402', 'P2001');
+insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
+values ('AV2', '12:00', '14:00', 'Monday', 'Room 204', 'P2002');
 insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
 values ('AV7', '11:30', '13:00', 'Thursday', 'Room 503', 'P2002');
 insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
+values ('AV3', '9:00', '11:00', 'Tuesday', 'Room 207', 'P2003');
+insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
 values ('AV8', '14:00', '15:30', 'Thursday', 'Room 602', 'P2003');
+insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
+values ('AV4', '12:00', '14:00', 'Tuesday', 'Room 309', 'P2004');
 insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
 values ('AV9', '11:30', '12:00', 'Friday', 'Room 704', 'P2004');
 insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
+values ('AV5', '10:30', '11:30', 'Wednseday', 'Room 301', 'P2005');
+insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
 values ('AV10', '14:30', '16:30', 'Friday', 'Room 702', 'P2005');
+insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
+values ('AV11', '13:30', '15:30', 'Monday', 'Room 301', 'P2006');
+insert into availability(avail_ID, avail_Start, avail_End, avail_Day, location, sp_ID)
+values ('AV12', '10:30', '12:30', 'Friday', 'Room 702', 'P2006');
+ 
+select * from availability;
  
 // to check: select * from availability;
  
